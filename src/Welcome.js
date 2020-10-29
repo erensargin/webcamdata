@@ -10,12 +10,14 @@ import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
+import { useStateValue } from "./StateProvider";
 
 function Welcome() {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [checked, setChecked] = useState(false);
   const history = useHistory();
+  const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     console.log(gender);
@@ -36,6 +38,11 @@ function Welcome() {
 
   const handleClick = (e) => {
     e.preventDefault();
+    dispatch({
+      type: "SET_AGE_GENDER",
+      age: age,
+      gender: gender,
+    });
     history.push("/video");
   };
 
@@ -64,11 +71,6 @@ function Welcome() {
               value="male"
               control={<Radio color="primary" />}
               label="Male"
-            />
-            <FormControlLabel
-              value="other"
-              control={<Radio color="primary" />}
-              label="Other"
             />
           </RadioGroup>
         </FormControl>
