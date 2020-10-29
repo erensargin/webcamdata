@@ -1,6 +1,7 @@
 import React from "react";
 import Webcam from "react-webcam";
 import ReactPlayer from "react-player/youtube";
+import { useStateValue } from "./StateProvider";
 
 function Web() {
   const webcamRef = React.useRef(null);
@@ -8,6 +9,8 @@ function Web() {
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [playing, setPlaying] = React.useState(false);
+  const [{ gender, age }, dispatch] = useStateValue();
+
   const [url, setUrl] = React.useState(
     "https://www.youtube.com/watch?v=ysz5S6PUM-U"
   );
@@ -59,10 +62,10 @@ function Web() {
 
   return (
     <div style={{ display: "flex", margin: "50px" }}>
-      <div style={{ width: "%100", marginRight: "50px" }}>
-        <Webcam audio={false} ref={webcamRef} />
+      <div style={{ flex: 0.5, marginRight: "50px" }}>
+        <Webcam audio={false} ref={webcamRef} width={500} />
       </div>
-      <div style={{ width: "1000px" }}>
+      <div style={{ flex: 1 }}>
         <ReactPlayer url={url} playing={playing} width="100%" height="100%" />
         {capturing ? (
           <button onClick={handleStopCaptureClick}>Stop Capture</button>
@@ -73,6 +76,9 @@ function Web() {
           <button onClick={handleDownload}>Download</button>
         )}
       </div>
+      <h1>
+        Age:{age} Gender:{gender}
+      </h1>
     </div>
   );
 }
