@@ -42,7 +42,7 @@ function Welcome() {
   return (
     <div>
       <div>
-        <h1>EO Project</h1>
+        <h1>EO Project Ogi</h1>
         <h5>Some Project Description</h5>
       </div>
       <div>
