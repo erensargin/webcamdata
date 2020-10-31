@@ -1,6 +1,8 @@
 export const initialState = {
   gender: "",
   age: "",
+  url: "",
+  videoname: "",
 };
 
 const reducer = (state, action) => {
@@ -18,6 +20,12 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       }; */
+    case "SET_URL_VIDEONAME":
+      return {
+        ...state,
+        url: action.url,
+        videoname: action.videoname,
+      };
     default:
       return state;
   }

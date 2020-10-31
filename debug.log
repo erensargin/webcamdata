@@ -1,3 +1,5 @@
 [1026/161459.085:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)
 [1028/173723.267:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)
 [1028/174127.030:ERROR:file_io.cc(90)] ReadExactly: expected 36, observed 0
+[1029/225607.036:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)
+[1031/180904.220:ERROR:directory_reader_win.cc(43)] FindFirstFile: Sistem belirtilen yolu bulamýyor. (0x3)

@@ -82,6 +82,7 @@ function Welcome() {
             label="Age"
             onChange={handleAge}
             type="number"
+            value={age}
           />
         </form>
         <FormControlLabel
