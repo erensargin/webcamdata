@@ -2,6 +2,7 @@ import React from "react";
 import Webcam from "react-webcam";
 import ReactPlayer from "react-player/youtube";
 import { useStateValue } from "./StateProvider";
+import { useHistory } from "react-router";
 
 function Web() {
   const webcamRef = React.useRef(null);
@@ -10,10 +11,11 @@ function Web() {
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [playing, setPlaying] = React.useState(false);
   const [{ gender, age }, dispatch] = useStateValue();
+  const history = useHistory();
 
-  const [url, setUrl] = React.useState(
-    "https://www.youtube.com/watch?v=ysz5S6PUM-U"
-  );
+  const [urlrek, setUrl] = React.useState([
+    { name: "reklam1", url: "https://www.youtube.com/watch?v=ysz5S6PUM-U" },
+  ]);
 
   const handleStartCaptureClick = React.useCallback(() => {
     setPlaying(true);
@@ -51,22 +53,33 @@ function Web() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       document.body.appendChild(a);
-      a.style = "display: none";
+      //a.style = "display: none";
       a.href = url;
       a.download = "react-webcam-stream-capture.webm";
-      a.click();
-      window.URL.revokeObjectURL(url);
+      dispatch({
+        type: "SET_URL_VIDEONAME",
+        url: a.href,
+        videoname: urlrek[0].name,
+      });
+      //a.click();
+      //window.URL.revokeObjectURL(url);
       setRecordedChunks([]);
     }
   }, [recordedChunks]);
 
   return (
     <div style={{ display: "flex", margin: "50px" }}>
+      {!age ? history.replace("/") : <p></p>}
       <div style={{ flex: 0.5, marginRight: "50px" }}>
         <Webcam audio={false} ref={webcamRef} width={500} />
       </div>
       <div style={{ flex: 1 }}>
-        <ReactPlayer url={url} playing={playing} width="100%" height="100%" />
+        <ReactPlayer
+          url={urlrek[0].url}
+          playing={playing}
+          width="100%"
+          height="100%"
+        />
         {capturing ? (
           <button onClick={handleStopCaptureClick}>Stop Capture</button>
         ) : (
