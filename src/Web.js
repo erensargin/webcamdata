@@ -4,6 +4,12 @@ import ReactPlayer from "react-player/youtube";
 import { useStateValue } from "./StateProvider";
 import { useHistory } from "react-router";
 
+// upload will be change
+import { storage, db } from "./firebase";
+import firebase from "firebase";
+
+//
+
 function Web() {
   const webcamRef = React.useRef(null);
   const mediaRecorderRef = React.useRef(null);
@@ -61,6 +67,44 @@ function Web() {
         url: a.href,
         videoname: urlrek[0].name,
       });
+
+      var storageRef = firebase.storage().ref();
+      var uploadTask = storageRef.child("images/" + blob.size).put(blob);
+
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+        function (snapshot) {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log("Upload is paused");
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log("Upload is running");
+              break;
+          }
+        },
+        function (error) {
+          // A full list of error codes is available at
+          // https://firebase.google.com/docs/storage/web/handle-errors
+          console.log(error);
+        },
+        function () {
+          // Upload completed successfully, now we can get the download URL
+          uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+            db.collection("datas").add({
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              age: age,
+              gender: gender,
+              videoUrl: downloadURL,
+            });
+          });
+        }
+      );
       //a.click();
       //window.URL.revokeObjectURL(url);
       setRecordedChunks([]);
