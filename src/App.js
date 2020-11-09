@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/video">
-            <h1>Lolxd</h1>
+            <h1>Advertisment Analysis</h1>
             <Web />
           </Route>
 
