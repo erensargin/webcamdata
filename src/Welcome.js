@@ -49,7 +49,7 @@ function Welcome() {
   return (
     <div>
       <div>
-        <h1>EO Project Ogi degisiklik</h1>
+        <h1>Advertisment Emotion analysis</h1>
         <h5>Some Project Description</h5>
       </div>
       <div>
@@ -63,12 +63,12 @@ function Welcome() {
             onChange={handleChange}
           >
             <FormControlLabel
-              value="female"
+              value="Female"
               control={<Radio color="primary" />}
               label="Female"
             />
             <FormControlLabel
-              value="male"
+              value="Male"
               control={<Radio color="primary" />}
               label="Male"
             />
@@ -93,7 +93,7 @@ function Welcome() {
               color="primary"
             />
           }
-          label="I have read bla bla bla bla bla"
+          label="I have read terms and cond."
         />
       </div>
       <Button
@@ -102,7 +102,7 @@ function Welcome() {
         color="primary"
         onClick={handleClick}
       >
-        Continuah
+        Continue
       </Button>
     </div>
   );

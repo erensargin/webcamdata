@@ -20,7 +20,10 @@ function Web() {
   const history = useHistory();
 
   const [urlrek, setUrl] = React.useState([
-    { name: "reklam1", url: "https://www.youtube.com/watch?v=ysz5S6PUM-U" },
+    {
+      name: "reklam1",
+      url: "https://www.youtube.com/watch?v=7NxPI3iTQQQ&ab_channel=luinunun",
+    },
   ]);
 
   const handleStartCaptureClick = React.useCallback(() => {
@@ -69,7 +72,20 @@ function Web() {
       });
 
       var storageRef = firebase.storage().ref();
-      var uploadTask = storageRef.child("images/" + blob.size).put(blob);
+      var currentdate = new Date();
+      var datetime =
+        currentdate.getDate() +
+        "." +
+        (currentdate.getMonth() + 1) +
+        "." +
+        currentdate.getFullYear() +
+        " @ " +
+        currentdate.getHours() +
+        ":" +
+        currentdate.getMinutes();
+      var uploadTask = storageRef
+        .child("images/" + age + " " + gender + " " + datetime)
+        .put(blob);
 
       // Listen for state changes, errors, and completion of the upload.
       uploadTask.on(
