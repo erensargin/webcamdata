@@ -146,7 +146,7 @@ function Web() {
           <button onClick={handleStartCaptureClick}>Start Capture</button>
         )}
         {recordedChunks.length > 0 && (
-          <button onClick={handleDownload}>Download</button>
+          <button onClick={handleDownload}>Upload</button>
         )}
       </div>
       <h1>
