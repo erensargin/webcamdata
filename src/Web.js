@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Webcam from "react-webcam";
 import ReactPlayer from "react-player/youtube";
 import { useStateValue } from "./StateProvider";
@@ -18,6 +18,7 @@ function Web() {
   const [playing, setPlaying] = React.useState(false);
   const [{ gender, age }, dispatch] = useStateValue();
   const history = useHistory();
+  const [played, setPlayed] = useState(0);
 
   const [urlrek, setUrl] = React.useState([
     {
@@ -84,7 +85,7 @@ function Web() {
         ":" +
         currentdate.getMinutes();
       var uploadTask = storageRef
-        .child("images/" + age + " " + gender + " " + datetime)
+        .child("videos/" + age + " " + gender + " " + datetime)
         .put(blob);
 
       // Listen for state changes, errors, and completion of the upload.
@@ -127,6 +128,11 @@ function Web() {
     }
   }, [recordedChunks]);
 
+  const handlePlayedtime = (e) => {
+    setPlayed(e.playedSeconds | 0);
+    console.log(played);
+  };
+
   return (
     <div style={{ display: "flex", margin: "50px" }}>
       {!age ? history.replace("/") : <p></p>}
@@ -139,6 +145,8 @@ function Web() {
           playing={playing}
           width="100%"
           height="100%"
+          onReady={() => console.log("onReady")}
+          onProgress={handlePlayedtime}
         />
         {capturing ? (
           <button onClick={handleStopCaptureClick}>Stop Capture</button>
