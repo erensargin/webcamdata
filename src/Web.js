@@ -169,21 +169,31 @@ function Web() {
           height="100%"
           onReady={() => console.log("onReady")}
           onProgress={handlePlayedtime}
+          onEnded={handleStopCaptureClick}
         />
         {capturing ? (
-          <button onClick={handleStopCaptureClick}>Stop Capture</button>
+          <p></p>
         ) : (
           <button onClick={handleStartCaptureClick}>Start Capture</button>
         )}
         {recordedChunks.length > 0 && (
           <button onClick={handleDownload}>Upload</button>
         )}
+        {recordedChunks.length > 0 && (
+          <div>
+            <h1>Beğendiniz mi</h1>
+            <div>
+              <input type="radio" value="Evet" name="gender" /> Evet
+              <input type="radio" value="Hayır" name="gender" /> Hayır
+              <input type="radio" value="Kararsız" name="gender" /> Kararsız
+            </div>
+          </div>
+        )}
         <button onClick={handleEmo}>Time</button>
       </div>
       <h1>
         Age:{age} Gender:{gender} Played: {played}
       </h1>
-      <button onClick={nextPage}> Anket Sayfası</button>
     </div>
   );
 }
