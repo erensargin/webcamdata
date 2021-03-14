@@ -151,6 +151,10 @@ function Web() {
     setEmotions(emotions.concat(played));
   };
 
+  const nextPage = (e) => {
+    history.push("/survey");
+  };
+
   return (
     <div style={{ display: "flex", margin: "50px" }}>
       {!age ? history.replace("/") : <p></p>}
@@ -179,6 +183,7 @@ function Web() {
       <h1>
         Age:{age} Gender:{gender} Played: {played}
       </h1>
+      <button onClick={nextPage}> Anket Sayfası</button>
     </div>
   );
 }
