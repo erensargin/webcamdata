@@ -19,11 +19,23 @@ function Web() {
   const [{ gender, age }, dispatch] = useStateValue();
   const history = useHistory();
   const [played, setPlayed] = useState(0);
+  const [emotions, setEmotions] = useState([]);
 
   const [urlrek, setUrl] = React.useState([
     {
-      name: "reklam1",
-      url: "https://www.youtube.com/watch?v=7NxPI3iTQQQ&ab_channel=luinunun",
+      name: "kesktra",
+      url:
+        "https://youtu.be/p_vYOK-Zb8Y?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+    },
+    {
+      name: "gofret",
+      url:
+        "https://youtu.be/_COqz11UiLg?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+    },
+    {
+      name: "canga",
+      url:
+        "https://youtu.be/BrqY4EQfTIY?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
   ]);
 
@@ -117,6 +129,7 @@ function Web() {
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               age: age,
               gender: gender,
+              emotion: emotions,
               videoUrl: downloadURL,
             });
           });
@@ -131,6 +144,11 @@ function Web() {
   const handlePlayedtime = (e) => {
     setPlayed(e.playedSeconds | 0);
     console.log(played);
+    console.log(emotions);
+  };
+
+  const handleEmo = (e) => {
+    setEmotions(emotions.concat(played));
   };
 
   return (
@@ -156,9 +174,10 @@ function Web() {
         {recordedChunks.length > 0 && (
           <button onClick={handleDownload}>Upload</button>
         )}
+        <button onClick={handleEmo}>Time</button>
       </div>
       <h1>
-        Age:{age} Gender:{gender}
+        Age:{age} Gender:{gender} Played: {played}
       </h1>
     </div>
   );
