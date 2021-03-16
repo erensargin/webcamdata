@@ -43,6 +43,10 @@ function Welcome() {
       age: age,
       gender: gender,
     });
+    dispatch({
+      type:"SET_COUNTER",
+      counter:0
+    })
     history.push("/video");
   };
 

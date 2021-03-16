@@ -3,6 +3,7 @@ export const initialState = {
   age: "",
   url: "",
   videoname: "",
+  counter: 0,
 };
 
 const reducer = (state, action) => {
@@ -20,6 +21,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       }; */
+    case "SET_COUNTER":
+      return{
+        ...state,
+        counter: action.counter
+      }
     case "SET_URL_VIDEONAME":
       return {
         ...state,

@@ -16,7 +16,7 @@ function Web() {
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
   const [playing, setPlaying] = React.useState(false);
-  const [{ gender, age }, dispatch] = useStateValue();
+  const [{ gender, age, counter}, dispatch] = useStateValue();
   const history = useHistory();
   const [played, setPlayed] = useState(0);
   const [emotions, setEmotions] = useState([]);
@@ -139,6 +139,7 @@ function Web() {
       //window.URL.revokeObjectURL(url);
       setRecordedChunks([]);
     }
+    
   }, [recordedChunks]);
 
   const handlePlayedtime = (e) => {
@@ -152,7 +153,12 @@ function Web() {
   };
 
   const nextPage = (e) => {
+    dispatch({
+      type:"SET_COUNTER",
+      counter:counter+1,
+    });    
     history.push("/survey");
+    history.replace("/video");
   };
 
   return (
@@ -163,7 +169,7 @@ function Web() {
       </div>
       <div style={{ flex: 1 }}>
         <ReactPlayer
-          url={urlrek[0].url}
+          url={urlrek[counter].url}
           playing={playing}
           width="100%"
           height="100%"
@@ -189,7 +195,7 @@ function Web() {
             </div>
           </div>
         )}
-        <button onClick={handleEmo}>Time</button>
+        <button onClick={nextPage}>Time</button>
       </div>
       <h1>
         Age:{age} Gender:{gender} Played: {played}
