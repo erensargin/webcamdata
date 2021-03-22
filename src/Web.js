@@ -183,6 +183,7 @@ function Web() {
   return (
     <div>
       <div style={{ float: "right", margin: "50px" }}>
+        {!age ? history.replace("/") : <p></p>}
         <Webcam audio={false} ref={webcamRef} width={300} />
         <div style={{ marginTop: "20px" }}>
           {capturing ? (
@@ -195,10 +196,9 @@ function Web() {
           )}
         </div>
         <div style={{ marginTop: "250px" }}>
-          {recordedChunks.length > 0 && <Sur />}
-          <button style={{ float: "right" }} onClick={handleChange}>
-            Sonraki
-          </button>
+          {recordedChunks.length > 0 && (
+            <Sur soru1={soru1} handleChange={handleChange} />
+          )}
         </div>
       </div>
       <div style={{ float: "left", margin: "150px" }}>
