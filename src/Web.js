@@ -25,7 +25,9 @@ function Web() {
 	const [disgusting, setDisgusting] = useState([]);
 	const [scary, setScary] = useState([]);
 	const [interesting, setInteresting] = useState([]);
+	const [notr, setNotr] = useState([]);
 	const [soru1, setSoru1] = useState("");
+	const [soru2, setSoru2] = useState("");
 
 	const [urlrek, setUrl] = React.useState([
 		{
@@ -143,7 +145,9 @@ function Web() {
 							disgusting: disgusting,
 							scary: scary,
 							interesting: interesting,
+							notr: notr,
 							soru1: soru1,
+							soru2: soru2,
 						});
 					});
 				}
@@ -179,16 +183,22 @@ function Web() {
 	const handleInteresting = (e) => {
 		setInteresting(interesting.concat(played));
 	};
+	const handleNotr = (e) => {
+		setNotr(notr.concat(played));
+	};
 
 	const handleChange = (event) => {
 		setSoru1(event.target.value);
+	};
+	const handleChange2 = (event) => {
+		setSoru2(event.target.value);
 	};
 
 	return (
 		<div>
 			<div style={{ float: "right", margin: "50px" }}>
 				{!age ? history.replace("/") : <p></p>}
-				<Webcam audio={false} ref={webcamRef} width={300} />
+				<Webcam audio={true} ref={webcamRef} width={300} />
 				<div style={{ marginTop: "20px" }}>
 					{capturing ? (
 						<p></p>
@@ -201,7 +211,12 @@ function Web() {
 				</div>
 				<div style={{ marginTop: "250px" }}>
 					{recordedChunks.length > 0 && (
-						<Sur soru1={soru1} handleChange={handleChange} />
+						<Sur
+							soru1={soru1}
+							soru2={soru2}
+							handleChange={handleChange}
+							handleChange2={handleChange2}
+						/>
 					)}
 				</div>
 			</div>
@@ -228,10 +243,13 @@ function Web() {
 						<button onClick={handleDisgusting}>Tiksindirici</button>
 					</div>
 					<div style={{ marginRight: "30px" }}>
+						<button onClick={handleInteresting}>Merak Uyandırıcı</button>
+					</div>
+					<div style={{ marginRight: "30px" }}>
 						<button onClick={handleScary}>Korkutucu</button>
 					</div>
 					<div style={{ marginRight: "30px" }}>
-						<button onClick={handleInteresting}>Merak Uyandırıcı</button>
+						<button onClick={handleNotr}>Nötr</button>
 					</div>
 				</div>
 			</div>
