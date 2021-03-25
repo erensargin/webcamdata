@@ -240,6 +240,7 @@ function Web() {
     <div>
       <div style={{ float: "right", margin: "50px" }}>
         {!age ? history.replace("/") : <p></p>}
+        {counter == 12 ? history.push("/end") : <div></div>}
         <Webcam audio={true} ref={webcamRef} width={300} />
         <div style={{ marginTop: "20px" }}>
           {capturing ? (
