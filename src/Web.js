@@ -248,18 +248,18 @@ function Web() {
           ) : (
             <button onClick={handleStartCaptureClick}>Kayda Başla</button>
           )}
-          {recordedChunks.length > 0 && (
-            <button onClick={handleDownload}>Yükle</button>
-          )}
         </div>
         <div style={{ marginTop: "250px" }}>
           {recordedChunks.length > 0 && (
-            <Sur
-              soru1={soru1}
-              soru2={soru2}
-              handleChange={handleChange}
-              handleChange2={handleChange2}
-            />
+            <div>
+              <Sur
+                soru1={soru1}
+                soru2={soru2}
+                handleChange={handleChange}
+                handleChange2={handleChange2}
+              />
+              <button onClick={handleDownload}>Sonraki Video</button>
+            </div>
           )}
         </div>
       </div>
