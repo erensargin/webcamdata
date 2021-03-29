@@ -238,10 +238,10 @@ function Web() {
 
   return (
     <div>
-      <div style={{ float: "right", margin: "50px" }}>
+      <div style={{ float: "right" }}>
         {!age ? history.replace("/") : <p></p>}
-        {counter == 12 ? history.push("/end") : <div></div>}
-        <Webcam audio={true} ref={webcamRef} width={300} />
+        {counter === 13 ? history.push("/end") : <div></div>}
+        <Webcam audio={true} ref={webcamRef} width="60%" />
         <div style={{ marginTop: "20px" }}>
           {capturing ? (
             <p></p>
@@ -249,7 +249,7 @@ function Web() {
             <button onClick={handleStartCaptureClick}>Kayda Başla</button>
           )}
         </div>
-        <div style={{ marginTop: "250px" }}>
+        <div style={{ marginTop: "100px" }}>
           {recordedChunks.length > 0 && (
             <div>
               <Sur
@@ -258,41 +258,60 @@ function Web() {
                 handleChange={handleChange}
                 handleChange2={handleChange2}
               />
-              <button onClick={handleDownload}>Sonraki Video</button>
+              <button
+                style={{ float: "right", marginRight: "50px" }}
+                onClick={handleDownload}
+              >
+                Sonraki Video
+              </button>
             </div>
           )}
         </div>
       </div>
-      <div style={{ float: "left", margin: "150px" }}>
-        <ReactPlayer
-          url={urlrek[counter].url}
-          playing={playing}
-          width="600px" //150
-          height="300px" //120
-          onReady={() => console.log("onReady")}
-          onProgress={handlePlayedtime}
-          onEnded={handleStopCaptureClick}
-        />
+      <div style={{ float: "left", margin: "20px 0 0 50px" }}>
+        <div>
+          <ReactPlayer
+            url={urlrek[counter].url}
+            playing={playing}
+            width="100%"
+            height="400px"
+            onReady={() => console.log("onReady")}
+            onProgress={handlePlayedtime}
+            onEnded={handleStopCaptureClick}
+          />
+        </div>
         <div
-          style={{ display: "flex", marginTop: "50px", marginLeft: "250px" }}
+          style={{ display: "flex", marginTop: "50px", marginLeft: "150px" }}
         >
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleHappy}>Mutluluk</button>
+            <button style={{ height: "60px" }} onClick={handleHappy}>
+              Mutluluk/Komik
+            </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleEmotional}>Duygusal</button>
+            <button style={{ height: "60px" }} onClick={handleInteresting}>
+              Merak Uyandırıcı
+            </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleDisgusting}>Tiksindirici</button>
+            <button style={{ height: "60px" }} onClick={handleNotr}>
+              Nötr
+            </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleInteresting}>Merak Uyandırıcı</button>
+            <button style={{ height: "60px" }} onClick={handleDisgusting}>
+              Tiksindirici
+            </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleScary}>Korkutucu</button>
+            <button style={{ height: "60px" }} onClick={handleScary}>
+              Korkutucu
+            </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button onClick={handleNotr}>Nötr</button>
+            <button style={{ height: "60px" }} onClick={handleEmotional}>
+              Duygusal
+            </button>
           </div>
         </div>
       </div>
