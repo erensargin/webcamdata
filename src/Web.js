@@ -87,6 +87,10 @@ function Web() {
       name: "vodafone",
       url: "https://youtu.be/IEFwyOJkg0M",
     },
+    {
+      name: "bitis",
+      url: "https://www.youtube.com/",
+    },
   ]);
 
   const handleStartCaptureClick = React.useCallback(() => {
@@ -236,12 +240,31 @@ function Web() {
     setSoru2(event.target.value);
   };
 
+  const divStyle = {
+    visibility: "visible",
+  };
+  const cng = () => {
+    var x = document.getElementById("web");
+    var y = document.getElementById("buttonhide");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.innerHTML = "Kamerayı gizle";
+    } else {
+      x.style.visibility = "hidden";
+      y.innerHTML = "Kamerayı göster";
+    }
+  };
   return (
     <div>
       <div style={{ float: "right" }}>
         {!age ? history.replace("/") : <p></p>}
         {counter === 13 ? history.push("/end") : <div></div>}
-        <Webcam audio={true} ref={webcamRef} width="60%" />
+        <div id="web" style={divStyle}>
+          <Webcam audio={true} ref={webcamRef} width="60%" />
+        </div>
+        <button id="buttonhide" onClick={cng}>
+          Kamerayı gizle
+        </button>
         <div style={{ marginTop: "20px" }}>
           {capturing ? (
             <p></p>
