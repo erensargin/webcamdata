@@ -280,36 +280,52 @@ function Web() {
             onEnded={handleStopCaptureClick}
           />
         </div>
-        <div
-          style={{ display: "flex", marginTop: "50px", marginLeft: "150px" }}
-        >
+        <div style={{ display: "flex", marginTop: "50px" }}>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleHappy}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleHappy}
+            >
               Mutluluk/Komik
             </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleInteresting}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleInteresting}
+            >
               Merak Uyandırıcı
             </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleNotr}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleNotr}
+            >
               Nötr
             </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleDisgusting}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleDisgusting}
+            >
               Tiksindirici
             </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleScary}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleScary}
+            >
               Korkutucu
             </button>
           </div>
           <div style={{ marginRight: "30px" }}>
-            <button style={{ height: "60px" }} onClick={handleEmotional}>
+            <button
+              style={{ height: "60px", width: "105px" }}
+              onClick={handleEmotional}
+            >
               Duygusal
             </button>
           </div>

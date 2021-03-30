@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/video">
-            <h1>Advertisment Analysis</h1>
+            <h1>Rekalam - Duygu Analizi</h1>
             <Web />
           </Route>
           <Route path="/survey">

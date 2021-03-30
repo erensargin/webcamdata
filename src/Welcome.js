@@ -44,21 +44,29 @@ function Welcome() {
       gender: gender,
     });
     dispatch({
-      type:"SET_COUNTER",
-      counter:0
-    })
+      type: "SET_COUNTER",
+      counter: 0,
+    });
     history.push("/video");
   };
 
   return (
     <div>
       <div>
-        <h1>Advertisment Emotion analysis</h1>
-        <h5>Some Project Description</h5>
+        <h1>Rekalam - Duygu Analizi</h1>
+        <h5>
+          Bu site İstanbul Kültür Üniversitesi Öğrencileri Oğuzhan KIR, Eren
+          SARGIN ve Alperen ARSLANTAŞ'ın yaptığı bitirme projesi çalışması için
+          hazırlanmıştır.
+        </h5>
+        <h5>
+          Bize nasıl yardımcı olabileceğinizi öğrenmek için aşağıdaki videoyu
+          izleyebilirsiniz. Şimdiden teşekkürler.
+        </h5>
       </div>
       <div>
         <FormControl component="fieldset">
-          <FormLabel component="legend">Gender*</FormLabel>
+          <FormLabel component="legend">Cinsiyet*</FormLabel>
           <RadioGroup
             row
             aria-label="gender"
@@ -69,12 +77,12 @@ function Welcome() {
             <FormControlLabel
               value="Female"
               control={<Radio color="primary" />}
-              label="Female"
+              label="Kadın"
             />
             <FormControlLabel
               value="Male"
               control={<Radio color="primary" />}
-              label="Male"
+              label="Erkek"
             />
           </RadioGroup>
         </FormControl>
@@ -83,7 +91,7 @@ function Welcome() {
           <TextField
             required
             id="standard-basic"
-            label="Age"
+            label="Yaş"
             onChange={handleAge}
             type="number"
             value={age}
@@ -97,7 +105,7 @@ function Welcome() {
               color="primary"
             />
           }
-          label="I have read terms and cond."
+          label="Bu projede görüntümün kaydedilmesini ve sadece projeyi yöneten kişilerin kullanmasına izin veriyorum."
         />
       </div>
       <Button
@@ -106,7 +114,7 @@ function Welcome() {
         color="primary"
         onClick={handleClick}
       >
-        Continue
+        Kabul Et
       </Button>
     </div>
   );
