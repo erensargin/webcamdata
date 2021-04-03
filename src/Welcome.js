@@ -11,6 +11,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
 import { useStateValue } from "./StateProvider";
+import ReactPlayer from "react-player/youtube";
 
 function Welcome() {
   const [gender, setGender] = useState("");
@@ -53,7 +54,7 @@ function Welcome() {
   return (
     <div>
       <div>
-        <h1>Rekalam - Duygu Analizi</h1>
+        <h1>Reklam - Duygu Analizi</h1>
         <h5>
           Bu site İstanbul Kültür Üniversitesi Öğrencileri Oğuzhan KIR, Eren
           SARGIN ve Alperen ARSLANTAŞ'ın yaptığı bitirme projesi çalışması için
@@ -64,6 +65,21 @@ function Welcome() {
           izleyebilirsiniz. Şimdiden teşekkürler.
         </h5>
       </div>
+      <div>
+        <h2>Projeye Başlamadan Önce Sistemi Nasıl Kullanacağınızı Öğrenin</h2>
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=2FQlJtPiIic&ab_channel=O%C4%9FuzhanKIR"
+          playing={false}
+          width="50%"
+          height="400px"
+          style={{ margin: "auto" }}
+        />
+        <p>
+          Videoya kayıt boyunca müdahale edemeyeceğinizden bilgisayarınızın
+          sesini kısıp katılım sağlamanızı öneririz.
+        </p>
+      </div>
+
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Cinsiyet*</FormLabel>
