@@ -36,7 +36,7 @@ function Web() {
         "https://youtu.be/p_vYOK-Zb8Y?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
-      name: "ulker_gofret",
+      name: "gofret",
       url:
         "https://youtu.be/_COqz11UiLg?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
@@ -51,7 +51,7 @@ function Web() {
         "https://youtu.be/SGnY_2cqcTE?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
-      name: "algida_boom",
+      name: "boomboom",
       url:
         "https://youtu.be/tNCZQJ9pRvA?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
@@ -68,7 +68,7 @@ function Web() {
       url: "https://youtu.be/OE1BSrMldsM",
     },
     {
-      name: "little_ice",
+      name: "icecream",
       url: "https://www.youtube.com/watch?v=erh2ngRZxs0",
     },
     {
@@ -80,7 +80,7 @@ function Web() {
       url: "https://www.youtube.com/watch?v=lQKr2mFrJws",
     },
     {
-      name: "joker",
+      name: "jokerbaba",
       url: "https://www.youtube.com/watch?v=Fi4n1elVgT4",
     },
     {
@@ -152,7 +152,16 @@ function Web() {
         ":" +
         currentdate.getMinutes();
       var uploadTask = storageRef
-        .child("videos/" + age + " " + gender + " " + datetime)
+        .child(
+          "videos/" +
+            age +
+            "_" +
+            gender +
+            "_" +
+            urlrek[counter].name +
+            "_" +
+            datetime
+        )
         .put(blob);
 
       // Listen for state changes, errors, and completion of the upload.
