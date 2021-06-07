@@ -4,8 +4,14 @@ import { useHistory } from "react-router";
 
 function End() {
   return (
-    <div>
-      <h1>Katıldığınız için teşekkürler :)</h1>
+    <div
+      style={{
+        backgroundImage: "url(/minimal-background-pattern-wordpress-1.jpg)",
+        margin: "-22px 0",
+        height: "1000px",
+      }}
+    >
+      <h1>Thank you for your participation :)</h1>
     </div>
   );
 }

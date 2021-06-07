@@ -14,7 +14,7 @@ function Sur(props) {
     <div>
       <div>
         <FormControl component="fieldset">
-          <FormLabel component="legend">Ne kadar etkili oldu</FormLabel>
+          <FormLabel component="legend">How effective the ad was?</FormLabel>
           <RadioGroup
             row
             aria-label="Soru"
@@ -78,7 +78,7 @@ function Sur(props) {
       <div>
         <FormControl component="fieldset">
           <FormLabel component="legend">
-            Bu reklamı daha önce seyretmiş miydiniz?
+            Have you seen this ad before?
           </FormLabel>
           <RadioGroup
             row
@@ -90,12 +90,12 @@ function Sur(props) {
             <FormControlLabel
               value="Evet"
               control={<Radio color="primary" />}
-              label="Evet"
+              label="Yes"
             />
             <FormControlLabel
               value="Hayır"
               control={<Radio color="primary" />}
-              label="Hayır"
+              label="No"
             />
           </RadioGroup>
         </FormControl>

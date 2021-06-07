@@ -52,21 +52,37 @@ function Welcome() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: "url(/minimal-background-pattern-wordpress-1.jpg)",
+        margin: "-22px 0",
+      }}
+    >
       <div>
-        <h1>Reklam - Duygu Analizi</h1>
-        <h5>
-          Bu site İstanbul Kültür Üniversitesi Öğrencileri Oğuzhan KIR, Eren
-          SARGIN ve Alperen ARSLANTAŞ'ın yaptığı bitirme projesi çalışması için
-          hazırlanmıştır.
-        </h5>
-        <h5>
-          Bize nasıl yardımcı olabileceğinizi öğrenmek için aşağıdaki videoyu
-          izleyebilirsiniz. Şimdiden teşekkürler.
-        </h5>
+        <h1
+          style={{
+            fontFamily: "Helvetica",
+            margin: "22px 0",
+            padding: "22px",
+          }}
+        >
+          Advertisement - Emotion Analysis
+        </h1>
+        <div style={{}}>
+          <h4>
+            This site is made by Istanbul Kultur University students Oğuzhan
+            KIR, Eren SARGIN and Alperen ARSLANTAŞ. Main purpose of this site is
+            collecting data for graduation project
+          </h4>
+
+          <h5>
+            You can learn how to help us by watching the video below. Thanks for
+            your participation
+          </h5>
+        </div>
       </div>
       <div>
-        <h2>Projeye Başlamadan Önce Sistemi Nasıl Kullanacağınızı Öğrenin</h2>
+        <h2>Learn How To Use The System Before Starting The Project</h2>
         <ReactPlayer
           url="https://www.youtube.com/watch?v=2FQlJtPiIic&ab_channel=O%C4%9FuzhanKIR"
           playing={false}
@@ -74,15 +90,23 @@ function Welcome() {
           height="400px"
           style={{ margin: "auto" }}
         />
-        <p>
-          Videoya kayıt boyunca müdahale edemeyeceğinizden bilgisayarınızın
-          sesini kısıp katılım sağlamanızı öneririz.
+
+        <p
+          style={{
+            color: "red",
+          }}
+        >
+          Since you cannot interfere with the video during the recording, We
+          recommend that you adjust your computer's volume and participate.
         </p>
       </div>
 
       <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Cinsiyet*</FormLabel>
+        <FormControl
+          component="fieldset"
+          style={{ padding: "5px -3px 5px 0px" }}
+        >
+          <FormLabel component="legend">Gender*</FormLabel>
           <RadioGroup
             row
             aria-label="gender"
@@ -93,12 +117,12 @@ function Welcome() {
             <FormControlLabel
               value="Female"
               control={<Radio color="primary" />}
-              label="Kadın"
+              label="Female"
             />
             <FormControlLabel
               value="Male"
               control={<Radio color="primary" />}
-              label="Erkek"
+              label="Male"
             />
           </RadioGroup>
         </FormControl>
@@ -107,7 +131,7 @@ function Welcome() {
           <TextField
             required
             id="standard-basic"
-            label="Yaş"
+            label="Age"
             onChange={handleAge}
             type="number"
             value={age}
@@ -121,7 +145,7 @@ function Welcome() {
               color="primary"
             />
           }
-          label="Bu projede görüntümün kaydedilmesini ve sadece projeyi yöneten kişilerin kullanmasına izin veriyorum."
+          label="In this project, I allow my footage to be saved and only the people managing the project to use."
         />
       </div>
       <Button
@@ -129,8 +153,12 @@ function Welcome() {
         variant="contained"
         color="primary"
         onClick={handleClick}
+        style={{
+          border: "2px black solid",
+          padding: "5px -3px 5px 0px",
+        }}
       >
-        Kabul Et
+        Agreed
       </Button>
     </div>
   );

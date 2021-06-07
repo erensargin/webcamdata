@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import { storage, db } from "./firebase";
 import firebase from "firebase";
 import Sur from "./Sur";
+import { Button } from "@material-ui/core";
 
 //
 
@@ -32,28 +33,23 @@ function Web() {
   const [urlrek, setUrl] = React.useState([
     {
       name: "kesktra",
-      url:
-        "https://youtu.be/p_vYOK-Zb8Y?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+      url: "https://youtu.be/p_vYOK-Zb8Y?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
       name: "gofret",
-      url:
-        "https://youtu.be/_COqz11UiLg?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+      url: "https://youtu.be/_COqz11UiLg?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
       name: "canga",
-      url:
-        "https://youtu.be/BrqY4EQfTIY?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+      url: "https://youtu.be/BrqY4EQfTIY?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
       name: "snickers",
-      url:
-        "https://youtu.be/SGnY_2cqcTE?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+      url: "https://youtu.be/SGnY_2cqcTE?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
       name: "boomboom",
-      url:
-        "https://youtu.be/tNCZQJ9pRvA?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
+      url: "https://youtu.be/tNCZQJ9pRvA?list=PLVqariV8Ds4Gsl81FKYVsXN8bSq_0dgLf",
     },
     {
       name: "sahibinden",
@@ -257,109 +253,156 @@ function Web() {
     var y = document.getElementById("buttonhide");
     if (x.style.visibility === "hidden") {
       x.style.visibility = "visible";
-      y.innerHTML = "Kamerayı gizle";
+      y.innerHTML = "Hide Camera";
     } else {
       x.style.visibility = "hidden";
-      y.innerHTML = "Kamerayı göster";
+      y.innerHTML = "Show Camera";
     }
   };
   return (
-    <div>
-      <div style={{ float: "right" }}>
-        {!age ? history.replace("/") : <p></p>}
-        {counter === 13 ? history.push("/end") : <div></div>}
-        <div id="web" style={divStyle}>
-          <Webcam audio={true} ref={webcamRef} width="60%" />
-        </div>
-        <button id="buttonhide" onClick={cng}>
-          Kamerayı gizle
-        </button>
-        <div style={{ marginTop: "20px" }}>
-          {capturing ? (
-            <p></p>
-          ) : (
-            <button onClick={handleStartCaptureClick}>Kayda Başla</button>
-          )}
-        </div>
-        <div style={{ marginTop: "100px" }}>
-          {recordedChunks.length > 0 && (
-            <div>
-              <Sur
-                soru1={soru1}
-                soru2={soru2}
-                handleChange={handleChange}
-                handleChange2={handleChange2}
-              />
-              <button
-                style={{ float: "right", marginRight: "50px" }}
-                onClick={handleDownload}
+    <div
+      style={{
+        backgroundImage: "url(/minimal-background-pattern-wordpress-1.jpg)",
+        margin: "-22px 0",
+        height: "950px",
+      }}
+    >
+      {!age ? history.replace("/") : <p></p>}
+      {counter === 13 ? history.push("/end") : <div></div>}
+      <h1
+        style={{
+          fontFamily: "Helvetica",
+          margin: "22px 0",
+          padding: "22px",
+        }}
+      >
+        Advertisement - Emotion Analysis
+      </h1>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div style={{ float: "left", margin: "20px 150px 0 50px" }}>
+          <div>
+            <ReactPlayer
+              url={urlrek[counter].url}
+              playing={playing}
+              width="100%"
+              height="400px"
+              onReady={() => console.log("onReady")}
+              onProgress={handlePlayedtime}
+              onEnded={handleStopCaptureClick}
+            />
+          </div>
+          <div style={{ display: "flex", marginTop: "50px" }}>
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "145px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleHappy}
               >
-                Sonraki Video
-              </button>
+                Happiness/Funny
+              </Button>
             </div>
-          )}
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "105px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleInteresting}
+              >
+                Interesting
+              </Button>
+            </div>
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "105px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleNotr}
+              >
+                Notr
+              </Button>
+            </div>
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "105px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleDisgusting}
+              >
+                Disgusting
+              </Button>
+            </div>
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "105px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleScary}
+              >
+                Scary
+              </Button>
+            </div>
+            <div style={{ marginRight: "30px" }}>
+              <Button
+                style={{ height: "60px", width: "105px" }}
+                variant="contained"
+                color="primary"
+                onClick={handleEmotional}
+              >
+                Emotional
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div style={{ float: "left", margin: "20px 0 0 50px" }}>
-        <div>
-          <ReactPlayer
-            url={urlrek[counter].url}
-            playing={playing}
-            width="100%"
-            height="400px"
-            onReady={() => console.log("onReady")}
-            onProgress={handlePlayedtime}
-            onEnded={handleStopCaptureClick}
-          />
-        </div>
-        <div style={{ display: "flex", marginTop: "50px" }}>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleHappy}
-            >
-              Mutluluk/Komik
-            </button>
+        <div
+          style={{
+            float: "right",
+            margin: "20px 150px 0 50px",
+          }}
+        >
+          <div id="web" style={divStyle}>
+            <Webcam audio={true} ref={webcamRef} width="60%" />
           </div>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleInteresting}
-            >
-              Merak Uyandırıcı
-            </button>
+          <Button id="buttonhide" onClick={cng}>
+            Hide Camera
+          </Button>
+          <div style={{ marginTop: "20px" }}>
+            {capturing ? (
+              <p></p>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleStartCaptureClick}
+                style={{ height: "60px" }}
+              >
+                Start Recording
+              </Button>
+            )}
           </div>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleNotr}
-            >
-              Nötr
-            </button>
-          </div>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleDisgusting}
-            >
-              Tiksindirici
-            </button>
-          </div>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleScary}
-            >
-              Korkutucu
-            </button>
-          </div>
-          <div style={{ marginRight: "30px" }}>
-            <button
-              style={{ height: "60px", width: "105px" }}
-              onClick={handleEmotional}
-            >
-              Duygusal
-            </button>
+          <div style={{ marginTop: "100px" }}>
+            {recordedChunks.length > 0 && (
+              <div>
+                <Sur
+                  soru1={soru1}
+                  soru2={soru2}
+                  handleChange={handleChange}
+                  handleChange2={handleChange2}
+                />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ float: "right", marginRight: "50px" }}
+                  onClick={handleDownload}
+                >
+                  Next Video
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

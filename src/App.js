@@ -12,7 +12,6 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/video">
-            <h1>Reklam - Duygu Analizi</h1>
             <Web />
           </Route>
           <Route path="/survey">
